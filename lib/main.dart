@@ -2,8 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
-import 'package:ubazar/src/views/splash_screen.dart';
-import 'package:ubazar/src/views/welcome_screens/welcome_screens_wrapper.dart';
+import 'package:ubazar/src/views/screens/welcome_screens/welcome_screens_wrapper.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
