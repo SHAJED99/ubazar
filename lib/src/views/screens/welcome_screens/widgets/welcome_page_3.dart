@@ -18,33 +18,24 @@ class WelcomePage3 extends StatelessWidget {
           ),
           // Text
           Positioned(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: FittedBox(
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: defaultSubtitle1,
-                        children: <TextSpan>[
-                          const TextSpan(text: 'Best Quality\n'),
-                          TextSpan(
-                            text: 'Grocery',
-                            style: defaultSubtitle1.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const TextSpan(text: ' Door to Door'),
-                        ],
-                      ),
+            child: Align(
+              heightFactor: 1,
+              child: FittedBox(
+                child: Column(
+                  children: [
+                    const Text("Best Quality", style: defaultSubtitle1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Grocery", style: defaultSubtitle1.copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700)),
+                        const Text(" Door to Door", style: defaultSubtitle1),
+                      ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

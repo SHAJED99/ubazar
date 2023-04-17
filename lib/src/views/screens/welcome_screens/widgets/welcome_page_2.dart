@@ -10,43 +10,36 @@ class WelcomePage2 extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: defaultPadding, vertical: defaultPadding),
       constraints: const BoxConstraints(maxWidth: defaultMaxWidth),
-      child: Stack(
-        children: [
-          // Artwork
-          Center(
-            child: SvgPicture.asset("lib/assets/svg/girl_with_bike.svg"),
-          ),
-          // Text
-          Positioned(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: FittedBox(
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: defaultSubtitle1,
-                        children: <TextSpan>[
-                          const TextSpan(text: 'Get\n'),
-                          TextSpan(
-                            text: 'Fast',
-                            style: defaultSubtitle1.copyWith(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const TextSpan(text: ' Delivery Service'),
+      child: LayoutBuilder(builder: (context, boxConstraints) {
+        return Stack(
+          children: [
+            // Artwork
+            Center(
+              child: SvgPicture.asset("lib/assets/svg/girl_with_bike.svg"),
+            ),
+            // Text
+            Positioned(
+              child: Align(
+                heightFactor: 1,
+                child: FittedBox(
+                  child: Column(
+                    children: [
+                      const Text("Get", style: defaultSubtitle1),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Fast", style: defaultSubtitle1.copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700)),
+                          const Text(" Delivery Service", style: defaultSubtitle1),
                         ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          )
-        ],
-      ),
+              ),
+            )
+          ],
+        );
+      }),
     );
   }
 }

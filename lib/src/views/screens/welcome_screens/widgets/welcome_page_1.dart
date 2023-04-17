@@ -23,8 +23,7 @@ class WelcomePage1 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text("Welcome to", style: defaultSubtitle1),
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
+                  Row(
                     children: [
                       SvgPicture.asset("lib/assets/svg/logo/logo_small.svg", height: defaultPadding * 2),
                       const Text(" Application", style: defaultSubtitle1),
