@@ -22,6 +22,7 @@ const MaterialColor defaultPrimarySwatch = MaterialColor(
 const Color defaultBlackColor = Color(0xFF000000);
 const Color defaultWhiteColor = Color(0xFFFAFAFA);
 const Color defaultGreyColor = Color(0xFF707070);
+const Color defaultShadowColor = Color.fromARGB(16, 0, 0, 0);
 const Color defaultErrorColor = Colors.redAccent;
 
 // // Duration
@@ -35,26 +36,31 @@ const defaultDuration = 150;
 const double defaultPadding = 16;
 const double defaultMaxWidth = 400;
 const double defaultNavBarHeight = 16 * 3.5;
-const double defaultBoxHeight = 16 * 3;
+const double defaultBoxHeight = 16 * 5;
 const double defaultCarouselHeight = 16 * 11;
 
 // // Box Shadow
-// const List<BoxShadow> defaultBoxShadowUp = [
-//   BoxShadow(
-//     color: defaultGreyColor,
-//     offset: Offset(0, 0),
-//     blurRadius: 2,
-//   )
-// ];
-// const List<BoxShadow> defaultBoxShadowDown = [
-//   BoxShadow(
-//     color: defaultGreyColor,
-//     offset: Offset(0, 2),
-//     blurRadius: 1,
-//   )
-// ];
+List<BoxShadow> defaultBoxShadowUp = [
+  const BoxShadow(
+    color: defaultShadowColor,
+    offset: Offset(0, -3),
+    blurRadius: 6,
+  )
+];
+const List<BoxShadow> defaultBoxShadowDown = [
+  BoxShadow(
+    color: defaultShadowColor,
+    offset: Offset(0, 3),
+    blurRadius: 6,
+  )
+];
 
 // // Text
+const TextStyle defaultHead1 = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  color: defaultBlackColor,
+);
 const TextStyle defaultSubtitle1 = TextStyle(
   fontSize: 32,
   fontWeight: FontWeight.w300,
@@ -64,6 +70,11 @@ const TextStyle defaultSubtitle2 = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.normal,
   color: defaultGreyColor,
+);
+const TextStyle defaultSubtitle3 = TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.w300,
+  color: Color(0XFF707070),
 );
 
 const TextStyle defaultCarouselTitle = TextStyle(

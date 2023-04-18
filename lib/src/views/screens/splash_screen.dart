@@ -19,7 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding * 2),
             constraints: const BoxConstraints(maxWidth: defaultMaxWidth),
-            child: SvgPicture.asset('lib/assets/svg/logo/logo_full.svg'),
+            child: SvgPicture.asset(
+              'lib/assets/svg/logo/logo_full.svg',
+            ),
           ),
         ),
       ),

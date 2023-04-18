@@ -14,7 +14,9 @@ class WelcomePage1 extends StatelessWidget {
         children: [
           // Artwork
           Center(
-            child: SvgPicture.asset("lib/assets/svg/cart.svg"),
+            child: SvgPicture.asset(
+              "lib/assets/svg/cart.svg",
+            ),
           ),
           // Text
           Positioned(
