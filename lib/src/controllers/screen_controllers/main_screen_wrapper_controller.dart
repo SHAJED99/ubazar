@@ -8,7 +8,6 @@ import 'package:ubazar/src/views/screens/wrapped_screens/cart/cart_screen.dart';
 import 'package:ubazar/src/views/screens/wrapped_screens/favourite/favourite_screen.dart';
 import 'package:ubazar/src/views/screens/wrapped_screens/home/home_screen.dart';
 import 'package:ubazar/src/views/screens/wrapped_screens/me/me_screen.dart';
-import 'package:ubazar/src/views/widgets/custom_top_app_bar.dart';
 
 class MainScreenWrapperController extends GetxController {
   final RxList<ScreenState> _previousPages = RxList<ScreenState>();
@@ -20,7 +19,7 @@ class MainScreenWrapperController extends GetxController {
     CustomPage(name: "Me", iconData: Icons.person_outlined, page: const MeScreen()),
   ];
 
-  changeIndex({required PageEnum index, PreferredSizeWidget? topNavBar, Widget? page}) {
+  changeIndex({required PageEnum index, Widget? page}) {
     // Add previous page list
     _previousPages.add(currentPage.value);
 

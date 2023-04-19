@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:ubazar/src/controllers/data_controllers/data_controller.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
 import 'package:ubazar/src/views/screens/welcome_screens/widgets/welcome_page_1.dart';
 import 'package:ubazar/src/views/screens/welcome_screens/widgets/welcome_page_2.dart';
 import 'package:ubazar/src/views/screens/welcome_screens/widgets/welcome_page_3.dart';
+import 'package:ubazar/src/views/screens/wrapped_screens/wrapper_screen.dart';
 import 'package:ubazar/src/views/widgets/buttons/custom_text_button.dart';
 
 class WelcomePageWrapper extends StatefulWidget {
@@ -16,6 +19,7 @@ class WelcomePageWrapper extends StatefulWidget {
 class _WelcomePageWrapperState extends State<WelcomePageWrapper> {
   int currentIndex = 0;
   final PageController _pageController = PageController();
+  final DataController _dataController = Get.find();
   @override
   void initState() {
     super.initState();
@@ -56,11 +60,16 @@ class _WelcomePageWrapperState extends State<WelcomePageWrapper> {
                           // Skip text
                           ? CustomTextButton(
                               contentPadding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
+                              onTap: () => _pageController.animateToPage(2, duration: const Duration(milliseconds: defaultDuration), curve: Curves.linear),
                               child: Text("Skip", style: defaultSubtitle2.copyWith(height: 1)),
                             )
                           : // Done text
                           CustomTextButton(
                               contentPadding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
+                              onTap: () {
+                                _dataController.setShowWelcomeScreenValue();
+                                Get.offAll(() => const WrapperScreen());
+                              },
                               child: Text("Done", style: defaultSubtitle2.copyWith(height: 1, color: Theme.of(context).primaryColor)),
                             ),
                     ),

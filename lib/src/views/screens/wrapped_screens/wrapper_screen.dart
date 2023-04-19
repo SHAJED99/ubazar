@@ -45,11 +45,12 @@ class _WrapperScreenState extends State<WrapperScreen> {
               drawer: FractionallySizedBox(
                 widthFactor: 0.8,
                 child: Container(
-                  color: Colors.amber,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               body: Column(
                 children: [
+                  // Search bar
                   AnimatedSize(
                     duration: const Duration(milliseconds: defaultDuration),
                     child: Container(
@@ -62,9 +63,10 @@ class _WrapperScreenState extends State<WrapperScreen> {
                                 print(value);
                               },
                             )
-                          : Container(),
+                          : null,
                     ),
                   ),
+                  // Main
                   Flexible(child: pageController.currentPage.value.page),
                 ],
               ),

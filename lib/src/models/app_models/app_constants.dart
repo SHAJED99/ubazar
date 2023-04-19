@@ -27,7 +27,6 @@ const Color defaultErrorColor = Colors.redAccent;
 
 // // Duration
 const defaultSplashScreenWaitingTime = 3;
-// const defaultOtpResend = 120;
 const defaultDuration = 150;
 
 // const int otpLength = 4;

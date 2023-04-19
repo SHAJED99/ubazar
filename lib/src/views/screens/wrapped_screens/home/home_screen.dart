@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: RefreshIndicator(
         onRefresh: () async {
-          await dataController.getProductList();
+          await dataController.loadData();
         },
         child: ListView.builder(
           itemBuilder: (context, index) {

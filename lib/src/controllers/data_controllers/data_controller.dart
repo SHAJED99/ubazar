@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:ubazar/src/controllers/services/api/api_services.dart';
 import 'package:ubazar/src/controllers/services/handle_error/error_handler.dart';
@@ -6,26 +5,36 @@ import 'package:ubazar/src/controllers/services/local_data/local_data.dart';
 
 class DataController extends GetxController {
   final LocalData _localData = Get.put(LocalData());
-  RxString token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI3OCIsIkN1cnJlbnRDb21JZCI6IjEiLCJuYmYiOjE2ODE3MDI5OTAsImV4cCI6MTY4MjMwNzc5MCwiaWF0IjoxNjgxNzAyOTkwfQ.JCU1MPH_SOJsHYpOn9GKrYx90N3Tsdtut3rTU3Hl09g"
-          .obs;
+  RxString token = "".obs;
+  bool showWelcomeScreen = false;
   RxBool isRequesting = false.obs;
 
   DataController();
 
   Future<void> initApp() async {
-    token.value = await _localData.initData().then((value) => value[0]);
+    await _localData.initData().then((value) {
+      token.value = value[0];
+      showWelcomeScreen = value[1];
+    });
     loadData();
   }
 
+  // Change welcomeScreenValue
+  void setShowWelcomeScreenValue() {
+    showWelcomeScreen = true;
+    _localData.setShowWelcomeScreenValue();
+  }
+
+  // Run to load primary data
   Future<void> loadData() async {
     await _errorHandler(function: () async {
       await getProductList();
     });
   }
 
+  // Fetching product
   Future<void> getProductList() async {
-    await ApiServices.getProductList(token.value);
+    if (token.isNotEmpty) await ApiServices.getProductList(token.value);
   }
 
   // Logout
@@ -33,6 +42,7 @@ class DataController extends GetxController {
     _localData.deleteUserData();
   }
 
+  // Error handler
   Future<ErrorType> _errorHandler({required Function function}) async {
     isRequesting.value = true;
     ErrorType errorType = await ErrorHandler.errorHandler(() async => function());

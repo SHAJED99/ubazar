@@ -37,9 +37,9 @@ class _MyAppState extends State<MyApp> {
           PointerDeviceKind.touch,
         },
       ),
-      // home: const SplashScreen(),
+      home: const SplashScreen(),
       // home: const WelcomePageWrapper(),
-      home: const WrapperScreen(),
+      // home: const WrapperScreen(),
     );
   }
 }
