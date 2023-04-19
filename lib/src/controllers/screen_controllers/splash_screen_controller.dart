@@ -17,12 +17,14 @@ class SplashScreenController extends GetxController {
     await dataController.initApp();
     showWelcomeScreen = dataController.showWelcomeScreen;
     isInit = true;
+
     update();
   }
 
   flashScreenTimeOut() async {
     await Future.delayed(const Duration(seconds: defaultSplashScreenWaitingTime));
     isDone = true;
+
     update();
   }
 }

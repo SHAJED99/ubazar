@@ -1,3 +1,5 @@
+// This file can be replaced with api documentation
+
 import 'package:flutter/material.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
 import 'package:ubazar/src/views/screens/wrapped_screens/home/widgets/home_carousel_card.dart';

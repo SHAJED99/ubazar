@@ -20,7 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
     final SplashScreenController splashScreenController = Get.put(SplashScreenController());
     // Go to Home Screen
     splashScreenController.addListener(() {
-      if (splashScreenController.isDone && splashScreenController.isInit) Get.off(() => splashScreenController.showWelcomeScreen ? const WrapperScreen() : const WelcomePageWrapper());
+      if (splashScreenController.isDone && splashScreenController.isInit) {
+        Get.off(() => splashScreenController.showWelcomeScreen ? const WrapperScreen() : const WelcomePageWrapper());
+      }
     });
   }
 

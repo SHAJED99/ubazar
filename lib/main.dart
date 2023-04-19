@@ -5,8 +5,6 @@ import 'package:ubazar/src/controllers/data_controllers/data_controller.dart';
 import 'package:ubazar/src/controllers/screen_controllers/main_screen_wrapper_controller.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
 import 'package:ubazar/src/views/screens/splash_screen.dart';
-import 'package:ubazar/src/views/screens/welcome_screens/welcome_screens_wrapper.dart';
-import 'package:ubazar/src/views/screens/wrapped_screens/wrapper_screen.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());

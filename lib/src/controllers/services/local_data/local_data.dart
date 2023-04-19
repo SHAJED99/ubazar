@@ -18,26 +18,31 @@ class LocalData extends GetxController {
 
   // logout user
   void deleteUserData() {
-    writeData(key: tokenName, value: "");
-    writeBool(key: showWelcomeWindowName, value: false);
+    _writeData(key: tokenName, value: "");
+    _writeBool(key: showWelcomeWindowName, value: false);
+  }
+
+  // set token value on login
+  void setTokenValue(String token) {
+    _writeData(key: tokenName, value: token);
   }
 
   // set welcomeScreen value
   void setShowWelcomeScreenValue() {
-    writeBool(key: showWelcomeWindowName, value: true);
+    _writeBool(key: showWelcomeWindowName, value: true);
   }
 
   // Write local data
-  void writeData({required String key, required String value}) {
+  void _writeData({required String key, required String value}) {
     if (_sharedPreferences == null) return;
     _sharedPreferences?.setString(key, value);
-    if (kDebugMode) print("LocalData.writeData(): String: $key Value: $value");
+    if (kDebugMode) print("LocalData.writeData(): $key: $value");
   }
 
   // Write local bool data
-  void writeBool({required String key, required bool value}) {
+  void _writeBool({required String key, required bool value}) {
     if (_sharedPreferences == null) return;
     _sharedPreferences?.setBool(key, value);
-    if (kDebugMode) print("LocalData.writeBool(): String: $key Value: $value");
+    if (kDebugMode) print("LocalData.writeBool(): $key: $value");
   }
 }

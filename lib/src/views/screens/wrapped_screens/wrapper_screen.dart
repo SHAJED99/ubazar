@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ubazar/src/controllers/screen_controllers/main_screen_wrapper_controller.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
+import 'package:ubazar/src/models/pojo_classes/page_index.dart';
 import 'package:ubazar/src/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:ubazar/src/views/widgets/custom_top_app_bar.dart';
+import 'package:ubazar/src/views/widgets/left_side_drawer.dart';
 import 'package:ubazar/src/views/widgets/text_field_widget.dart';
 
 class WrapperScreen extends StatefulWidget {
@@ -38,16 +41,14 @@ class _WrapperScreenState extends State<WrapperScreen> {
             () => Scaffold(
               key: scaffoldKey,
               appBar: CustomTopAppBar(
+                // Opening side drawer
                 onTapMenu: () => scaffoldKey.currentState?.openDrawer(),
                 // Showing search bar
                 onTapSearch: () => {if (mounted) setState(() => searchBarHeight == 0 ? searchBarHeight = defaultNavBarHeight : searchBarHeight = 0)},
+                // Cart button
+                onTapCart: () => pageController.changeIndex(index: PageEnum.cart),
               ),
-              drawer: FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Container(
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
+              drawer: LeftSideDrawer(),
               body: Column(
                 children: [
                   // Search bar
@@ -60,7 +61,7 @@ class _WrapperScreenState extends State<WrapperScreen> {
                           ? CustomTextFormField(
                               prefixIcon: const Icon(Icons.search),
                               onFieldSubmitted: (value) {
-                                print(value);
+                                if (kDebugMode) print(value);
                               },
                             )
                           : null,

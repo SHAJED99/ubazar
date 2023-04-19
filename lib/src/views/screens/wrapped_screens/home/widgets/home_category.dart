@@ -1,3 +1,5 @@
+// This file can be replaced with api documentation
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
@@ -16,16 +18,20 @@ class HomeCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(defaultPadding / 4),
-      child: Row(
-        children: categoryList
-            .map((e) => HomeCategoryCard(
-                  onTap: () {},
-                  text: e.name,
-                  child: e.image,
-                ))
-            .toList(),
+    return Align(
+      widthFactor: 1,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: defaultMaxWidth),
+        padding: const EdgeInsets.all(defaultPadding / 4),
+        child: Row(
+          children: categoryList
+              .map((e) => HomeCategoryCard(
+                    onTap: () {},
+                    text: e.name,
+                    child: e.image,
+                  ))
+              .toList(),
+        ),
       ),
     );
   }
