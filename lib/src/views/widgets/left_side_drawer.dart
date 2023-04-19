@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ubazar/src/controllers/data_controllers/data_controller.dart';
-import 'package:ubazar/src/controllers/services/user_message/snackbar.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
 import 'package:ubazar/src/views/widgets/buttons/custom_elevated_button_widget.dart';
 import 'package:ubazar/src/views/widgets/text_field_widget.dart';

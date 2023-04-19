@@ -34,7 +34,8 @@ class CustomTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           Positioned.fill(
             child: SvgPicture.asset(
               "lib/assets/svg/logo/logo_small.svg",
-              color: Theme.of(context).canvasColor,
+              // color: Theme.of(context).canvasColor,
+              colorFilter: ColorFilter.mode(Theme.of(context).canvasColor, BlendMode.srcIn),
             ),
           ),
           FractionallySizedBox(

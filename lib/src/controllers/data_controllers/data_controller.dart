@@ -4,12 +4,14 @@ import 'package:ubazar/src/controllers/services/api/api_services.dart';
 import 'package:ubazar/src/controllers/services/handle_error/error_handler.dart';
 import 'package:ubazar/src/controllers/services/local_data/local_data.dart';
 import 'package:ubazar/src/controllers/services/user_message/snackbar.dart';
+import 'package:ubazar/src/models/pojo_classes/product_model.dart';
 
 class DataController extends GetxController {
   final LocalData _localData = Get.put(LocalData());
   RxString token = "".obs;
   bool showWelcomeScreen = false;
   RxBool isRequesting = false.obs;
+  RxList<ProductModel> productList = RxList<ProductModel>();
 
   DataController();
 
@@ -36,7 +38,7 @@ class DataController extends GetxController {
 
   // Fetching product
   Future<void> getProductList() async {
-    if (token.isNotEmpty) await ApiServices.getProductList(token.value);
+    if (token.isNotEmpty) productList.value = await ApiServices.getProductList(token.value);
   }
 
   // Login (Needed to be changed with api)
