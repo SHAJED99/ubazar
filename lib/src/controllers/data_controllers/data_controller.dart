@@ -32,13 +32,17 @@ class DataController extends GetxController {
   // Run to load primary data
   Future<void> loadData() async {
     await _errorHandler(function: () async {
-      await getProductList();
+      await _getProductList();
     });
   }
 
   // Fetching product
-  Future<void> getProductList() async {
-    if (token.isNotEmpty) productList.value = await ApiServices.getProductList(token.value);
+  Future<void> _getProductList() async {
+    if (token.isEmpty) return;
+    await ApiServices.getProductList(token.value).then((value) {
+      if (value.isNotEmpty) productList.value = value;
+    });
+    if (kDebugMode) print("DataController.getProductList(): Product list length ${productList.length}");
   }
 
   // Login (Needed to be changed with api)

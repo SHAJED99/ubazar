@@ -28,11 +28,27 @@ class _WrapperScreenState extends State<WrapperScreen> {
       child: SafeArea(
         child: WillPopScope(
           onWillPop: () async {
+            // Showing exiting confirmation dialog
             bool res = pageController.goBackPage();
             if (res) {
-              showDialog(
+              return await showDialog(
                 context: context,
-                builder: (context) => Container(),
+                builder: (context) => AlertDialog(
+                  title: const Text('Exit App'),
+                  content: const Text('Do you want to exit an App?'),
+                  actions: [
+                    ElevatedButton(
+                      onPressed: () => Get.back(result: false),
+                      //return false when click on "NO"
+                      child: const Text('No'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Get.back(result: true),
+                      //return true when click on "Yes"
+                      child: const Text('Yes'),
+                    ),
+                  ],
+                ),
               );
             }
             return false;

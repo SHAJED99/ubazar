@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ubazar/src/controllers/data_controllers/data_controller.dart';
+import 'package:ubazar/src/controllers/screen_controllers/main_screen_wrapper_controller.dart';
 import 'package:ubazar/src/models/app_models/app_constants.dart';
+import 'package:ubazar/src/models/pojo_classes/page_index.dart';
+import 'package:ubazar/src/views/screens/product_details_screen/product_details_screen.dart';
 import 'package:ubazar/src/views/widgets/custom_card_widget.dart';
 
 class HomeProductListCard extends StatelessWidget {
-  const HomeProductListCard({
+  final int productListIndex;
+  HomeProductListCard({
     super.key,
+    required this.productListIndex,
   });
+
+  final DataController dataController = Get.find();
+  final MainScreenWrapperController mainScreenWrapperController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,14 @@ class HomeProductListCard extends StatelessWidget {
       child: Container(
         constraints: const BoxConstraints(maxWidth: defaultMaxWidth),
         child: CustomCard(
-          onTap: () {},
+          onTap: () {
+            mainScreenWrapperController.changeIndex(
+              index: PageEnum.home,
+              page: ProductDetailsScreen(
+                productModel: dataController.productList[productListIndex],
+              ),
+            );
+          },
           boxShadow: defaultBoxShadowDown,
           backgroundColor: Theme.of(context).canvasColor,
           borderRadius: BorderRadius.circular(0),
@@ -36,17 +53,17 @@ class HomeProductListCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Lorem Ipsum",
+                      // Headline
+                      Text(
+                        dataController.productList[productListIndex].name ?? "N/A",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: defaultHead1,
                       ),
                       const SizedBox(height: defaultPadding / 4),
+                      // Subtitle
                       Text(
-                        """In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to 
-                        demonstrate the visual form of a document or a typeface without relying on meaningful content. 
-                        Lorem ipsum may be used as a placeholder before final copy is available.""",
+                        dataController.productList[productListIndex].code ?? "N/A",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: defaultHead1.copyWith(
