@@ -10,6 +10,7 @@ class CustomCard extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final void Function()? onTap;
   final Clip clipBehavior;
+  final StackFit fit;
 
   const CustomCard({
     super.key,
@@ -22,6 +23,7 @@ class CustomCard extends StatelessWidget {
     this.boxShadow,
     this.onTap,
     this.clipBehavior = Clip.antiAlias,
+    this.fit = StackFit.loose,
   });
 
   @override
@@ -35,6 +37,7 @@ class CustomCard extends StatelessWidget {
       ),
       margin: margin,
       child: Stack(
+        fit: fit,
         children: [
           Container(
             padding: padding,
