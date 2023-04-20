@@ -1,16 +1,10 @@
-# ubazar
+# Ubazar
 
-A new Flutter project.
+Ubazar is a mobile application built with Flutter that allows users to view and search for products from a company. The app has a number of features, including the ability to view the company's flash and welcome instructions, view product lists, log in using a token, receive notifications about problems, and search for items using a search bar.
 
-## Getting Started
+## Key Features
 
-This project is a starting point for a Flutter application.
+# Flash and Welcome Instruction
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Upon opening the app, users are greeted with a flash from the company and welcome instructions.
+![My Project Logo](/screenshots/1.%20Splash%20Screen%20%26%20Welcome%20Screen.png)

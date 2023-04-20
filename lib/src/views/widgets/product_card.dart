@@ -135,21 +135,23 @@ class ProductCardButton extends StatelessWidget {
     return Expanded(
       flex: showItem ? 1 : 0,
       child: AnimatedSize(
-        duration: const Duration(milliseconds: defaultDuration),
-        child: showItem
-            ? CustomCard(
-                margin: EdgeInsets.zero,
-                padding: EdgeInsets.zero,
-                backgroundColor: backgroundColor,
-                onTap: onTap,
-                child: Center(
-                  child: FittedBox(
-                    child: child,
-                  ),
-                ),
-              )
-            : const SizedBox(),
-      ),
+          duration: const Duration(milliseconds: defaultDuration),
+          child: CustomCard(
+            margin: EdgeInsets.zero,
+            padding: EdgeInsets.zero,
+            backgroundColor: backgroundColor,
+            onTap: onTap,
+            child: AnimatedSize(
+              duration: const Duration(milliseconds: defaultDuration),
+              child: showItem
+                  ? Center(
+                      child: FittedBox(
+                        child: child,
+                      ),
+                    )
+                  : Container(),
+            ),
+          )),
     );
   }
 }
